@@ -31,14 +31,14 @@ const About = () => {
     const values = [
         "Creativity",
         "Attention to Detail",
-        "Always Learning",
+        "Continuous Learning",
         "Adaptability",
     ];
 
     return (
         <section
             id="about"
-            className="bg-white dark:bg-black text-black dark:text-white py-10 transition-colors duration-300">
+            className="bg-white dark:bg-black text-black dark:text-white py-10 pr-10 transition-colors duration-300">
             <div className="max-w-7xl mx-auto mt-16 px-6">
                 <div className="grid lg:grid-cols-[400px_minmax(500px,600px)_220px] gap-8 items-start justify-center">
 

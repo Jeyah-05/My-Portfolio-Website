@@ -15,16 +15,6 @@ const Hero = () => {
                         Hi there! 👋
                     </p>
 
-                    <h1 className="font-serif font-bold leading-tight text-5xl">
-                        Frontend Developer
-                        <br />
-                        <span className="text-pink-400">
-                            & UI/UX Designer
-                        </span>
-                    </h1>
-
-                    <div className="w-10 h-[2px] bg-pink-300 mt-6" />
-
                     <p className="mt-5 text-xl">
                         I'm
                     </p>
@@ -32,6 +22,16 @@ const Hero = () => {
                     <h2 className="mt-2 text-5xl font-serif font-bold text-teal-700 dark:text-teal-400">
                         Jhea Jhana Prudencio
                     </h2>
+
+                    <div className="w-10 h-[2px] bg-pink-300 mt-6" />
+
+                    <h1 className="font-serif font-bold leading-tight text-5xl mt-4">
+                        Frontend Developer
+                        <br />
+                        <span className="text-pink-400">
+                            & UI/UX Designer
+                        </span>
+                    </h1>
 
                     <div className="mt-8 pl-5 border-l-4 border-pink-300">
                         <p className="text-lg leading-8 dark:text-white">
