@@ -3,12 +3,13 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 .marquee {
+    display: flex;
     width: max-content;
-    animation: marquee 34s linear infinite;
+    animation: marquee 20s linear infinite;
 }
 
 .marquee span {
-    padding-right: 1rem;
+    flex-shrink: 0;
 }
 
 @keyframes marquee {
@@ -16,7 +17,7 @@
         transform: translateX(0%);
     }
     to {
-        transform: translateX(-22%);
+        transform: translateX(-50%);
     }
 }
 

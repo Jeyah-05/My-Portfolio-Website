@@ -110,13 +110,13 @@ const Hero = () => {
             <div className="overflow-hidden bg-teal-700 py-1">
                 <div className="marquee flex whitespace-nowrap text-white text-sm">
                     <span>
-                        GITHUB • FIGMA • FRONTEND • UI/UX DESIGN • BACKEND • JAVA • JAVASCRIPT •
-                        HTML • CSS • REACT • TAILWIND CSS • NODE.JS • EXPRESS.JS • MYSQL •
+                        GITHUB • FIGMA • FRONTEND • UI/UX DESIGN • BACKEND • JAVA • JAVASCRIPT • UBUNTU • MICROSOFT AZURE • GITLAB • 
+                        HTML • CSS • REACT • TAILWIND CSS • NODE.JS • EXPRESS.JS • MYSQL • GIT • PYTHON • GOOGLE CLOUD • PROTOTYPE • 
                     </span>
 
                     <span aria-hidden="true">
-                        GITHUB • FIGMA • FRONTEND • UI/UX DESIGN • BACKEND • JAVA • JAVASCRIPT •
-                        HTML • CSS • REACT • TAILWIND CSS • NODE.JS • EXPRESS.JS • MYSQL •
+                        GITHUB • FIGMA • FRONTEND • UI/UX DESIGN • BACKEND • JAVA • JAVASCRIPT • UBUNTU • MICROSOFT AZURE • GITLAB •
+                        HTML • CSS • REACT • TAILWIND CSS • NODE.JS • EXPRESS.JS • MYSQL • GIT • PYTHON • GOOGLE CLOUD • PROTOTYPE • 
                     </span>
                 </div>
             </div>
