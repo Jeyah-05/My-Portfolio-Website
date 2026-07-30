@@ -11,28 +11,28 @@ const Navbar = () => {
         localStorage.setItem("theme", darkMode ? "dark" : "light");
     }, [darkMode]);
 
-    { /* Highlight based on scroll
-        useEffect(() => {
-            const sections = document.querySelectorAll("section[id]");
+    { /* Highlight based on scroll */}
+    useEffect(() => {
+        const sections = document.querySelectorAll("section[id]");
 
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach((entry) => {
-                        if (entry.isIntersecting) {
-                            setActive(entry.target.id);
-                        }
-                    });
-                },
-                {
-                    threshold: 0.5,
-                }
-            );
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActive(entry.target.id);
+                    }
+                });
+            },
+            {
+                threshold: 0.5,
+            }
+        );
 
-            sections.forEach((section) => observer.observe(section));
+        sections.forEach((section) => observer.observe(section));
 
-            return () => observer.disconnect();
-        }, []);
-    */}
+        return () => observer.disconnect();
+    }, []);
+    
 
     const [active, setActive] = useState("hero");
 
@@ -51,14 +51,14 @@ const Navbar = () => {
                 { /* logo */}
                 <a
                     href="#hero"
-                    className="flex items-center gap-2 text-4xl dark:text-white font-bold font-serif"
+                    className="font-display flex items-center gap-2 text-4xl dark:text-white font-bold"
                 >
-                    <Heart className="w-7 h-7 fill-pink-300 text-pink-300" />
+                    <Heart className="w-7 h-7 fill-[#a99a76] text-[#a99a76]" />
                     <span>Jeyah</span>
                 </a>
 
                 { /* Navigation */}
-                <ul className="hidden md:flex items-center gap-10 ml-70">
+                <ul className="hidden md:flex items-center gap-10 ml-75">
                     {navItems.map((item) => (
                         <li key={item.id}>
                         <a
@@ -66,8 +66,8 @@ const Navbar = () => {
                             onClick={() => setActive(item.id)}
                             className={`font-semibold transition-all duration-200 pb-1 border-b-2 ${
                             active === item.id
-                                ? "text-pink-400 border-pink-300"
-                                : "text-black border-transparent dark:text-white hover:text-pink-400"
+                                ? "text-[#a99a76] border-[#a99a76]"
+                                : "text-black border-transparent dark:text-white hover:text-[#504735]"
                             }`}
                         >
                             {item.label}
@@ -91,7 +91,7 @@ const Navbar = () => {
                     <a
                         href="/resume.pdf"
                         target="_blank"
-                        className="bg-teal-700 hover:bg-teal-800 text-white px-5 py-2 rounded-full flex items-center gap-2 font-semibold transition"
+                        className="bg-[#a3b7b8] hover:bg-[#71979d] text-black px-5 py-2 rounded-full flex items-center gap-2 font-semibold dark:bg-[#3d4a4b] dark:text-white transition"
                     >
                         Resume
                         <ExternalLink size={16} />

@@ -1,28 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
-
-.marquee {
-    display: flex;
-    width: max-content;
-    animation: marquee 20s linear infinite;
-}
-
-.marquee span {
-    flex-shrink: 0;
-}
-
-@keyframes marquee {
-    from {
-        transform: translateX(0%);
-    }
-    to {
-        transform: translateX(-50%);
-    }
-}
 
 @layer base {
   html {
     scroll-behavior: smooth;
   }
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', 'Georgia', serif;
 }

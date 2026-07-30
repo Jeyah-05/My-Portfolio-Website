@@ -48,22 +48,21 @@ const About = () => {
                         {/* Quote */}
                         <div className="ml-2">
                             <h3
-                                className="font-serif italic text-4xl leading-tight rotate-[-8deg]"
-                                style={{ fontFamily: "Cormorant Garamond, serif" }}
+                                className="font-display text-4xl leading-tight rotate-[-8deg]"
                             >
-                                “An{" "}
-                                <span className="text-pink-300 font-semibold">
+                                "An{" "}
+                                <span className="text-[#a99a76] font-semibold">
                                     artist
                                 </span>{" "}
                                 at heart,
                                 <br />
                                 a{" "}
-                                <span className="text-teal-600 font-semibold">
+                                <span className="text-[#a3b7b8] font-semibold">
                                     developer
                                 </span>{" "}
-                                by craft”
+                                by craft"
                             </h3>
-                        </div>
+                                                    </div>
 
                         {/* Image */}
                         <img
@@ -76,14 +75,14 @@ const About = () => {
 
                     {/* CENTER */}
                     <div className="pr-20">
-                        <h2 className="font-serif text-6xl font-bold">
+                        <h2 className="font-display text-6xl font-bold">
                             About{" "}
-                            <span className="text-pink-300">
+                            <span className="text-[#a99a76]">
                                 Me
                             </span>
                         </h2>
 
-                        <div className="w-18 h-1 bg-pink-300 rounded-full mt-5 mb-10" />
+                        <div className="w-18 h-1 bg-[#a99a76] rounded-full mt-5 mb-10" />
                         <div className="space-y-10 text-lg text-justify leading-relaxed dark:text-white">
                             <p>
                                 I'm Jhea Jhana Prudencio, a BS Information
@@ -105,13 +104,12 @@ const About = () => {
                         </div>
 
                         <div className="mt-10 flex items-center gap-3">
-                            <h3 className="font-serif italic text-4xl text-teal-600"
-                                style={{ fontFamily: "Cormorant Garamond, serif" }}>
+                            <h3 className="font-display text-4xl text-[#a3b7b8]">
                                 Jhea Jhana
                             </h3>
 
                             <Heart
-                                className="fill-pink-300 text-pink-300"
+                                className="fill-[#a99a76] text-[#a99a76]"
                                 size={28}
                             />
                         </div>
@@ -121,7 +119,7 @@ const About = () => {
                     <div className="w-[240px] flex flex-col gap-5">
 
                         {/* Outside Coding */}
-                        <div className="rounded-2xl border border-pink-300 bg-pink-50 dark:bg-pink-950/20 p-4 -translate-x-4">
+                        <div className="rounded-2xl border border-[#a99a76] bg-[#e1ddd3] dark:bg-pink-950/20 p-4 -translate-x-4">
                             <h3 className="font-bold text-base mb-3">
                                 Outside Coding
                             </h3>
@@ -140,15 +138,15 @@ const About = () => {
                         </div>
 
                         {/* Music */}
-                        <div className="rounded-2xl border-2 border-teal-600 p-4 translate-x-6">
+                        <div className="rounded-2xl border-2 border-[#a3b7b8] p-4 translate-x-6">
                             <div className="flex items-center justify-between mb-3">
-                                <h3 className="font-bold text-base text-teal-700 dark:text-teal-400">
+                                <h3 className="font-bold text-base text-[#a3b7b8] dark:text-[#a3b7b8]">
                                     Always on Shuffle
                                 </h3>
 
                                 <AudioLines
                                     size={16}
-                                    className="text-teal-500"
+                                    className="text-[#a3b7b8]"
                                 />
                             </div>
 
@@ -160,7 +158,7 @@ const About = () => {
                                     >
                                         <Play
                                             size={14}
-                                            className="fill-teal-600 text-teal-600"
+                                            className="fill-[#a3b7b8] text-[#a3b7b8]"
                                         />
                                         <span>{genre}</span>
                                     </div>
@@ -169,7 +167,7 @@ const About = () => {
                         </div>
 
                         {/* Values */}
-                        <div className="rounded-2xl border border-pink-300 bg-pink-50 dark:bg-pink-950/20 p-4 -translate-x-2">
+                        <div className="rounded-2xl border border-[#a99a76] bg-[#d8d5ce] dark:bg-pink-950/20 p-4 -translate-x-2">
                             <h3 className="font-bold text-base mb-3">
                                 My Values
                             </h3>
@@ -181,8 +179,8 @@ const About = () => {
                                         className="flex items-center gap-3 text-[15px]"
                                     >
                                         <CircleCheck
-                                            size={16}
-                                            className="fill-black text-white dark:fill-white dark:text-black"
+                                            size={18}
+                                            className="fill-black text-[#d8d5ce] dark:fill-white dark:text-black"
                                         />
                                         <span>{value}</span>
                                     </div>
