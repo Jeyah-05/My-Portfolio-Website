@@ -83,8 +83,8 @@ const About = () => {
                         </h2>
 
                         <div className="w-18 h-1 bg-[#a99a76] rounded-full mt-5 mb-10" />
-                        <div className="space-y-10 text-lg text-justify leading-relaxed dark:text-white">
-                            <p>
+                        <div className="space-y-10text-justify leading-relaxed dark:text-white">
+                            <p className="mb-4">
                                 I'm Jhea Jhana Prudencio, a BS Information
                                 Technology graduate with experience in web
                                 application development. Having worked on both
@@ -92,14 +92,23 @@ const About = () => {
                                 passion in crafting intuitive interfaces and
                                 meaningful user experiences through frontend
                                 development and UI/UX design.
+
                             </p>
 
-                            <p>
+                            <p className="mb-4">
                                 I've always been drawn to creativity, whether
                                 through art, design, or technology. These
                                 creative interests influence the way I approach
                                 development and inspire me to build thoughtful,
                                 user-friendly digital experiences.
+                            </p>
+
+                            <p>
+                                I'm always looking for opportunities to learn, 
+                                challenge myself, and refine my skills. Whether I'm 
+                                designing a prototype in Figma or building a responsive 
+                                web application, I strive to create solutions that are 
+                                thoughtful, user-centered, and leave a lasting impression.
                             </p>
                         </div>
 

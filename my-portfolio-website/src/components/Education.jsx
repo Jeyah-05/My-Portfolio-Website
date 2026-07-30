@@ -1,217 +1,135 @@
-import { GraduationCap, Building2, Medal, Trophy, Award } from "lucide-react";
-import { FaSchool } from "react-icons/fa";
-import { GiAchievement } from "react-icons/gi";
-import PMALogo from "../assets/pmalogoicon.png";
+import { MapPin } from "lucide-react";
 
-const education = [
+const educationData = [
     {
-        school: "Saint Louis University",
-        location: "Baguio City",
-        degree: "Bachelor of Science in Information Technology",
-        year: "May 2026",
-        honor: "Magna Cum Laude",
-        color: "pink",
-        icon: <GraduationCap size={30} />,
+        year: "2020",
+        school: "Dacap Norte National High School",
+        level: "Junior High School",
+        achievements: [
+            { text: "Academic Excellence Award – With Honors", bold: true },
+        ],
+        date: "July 2020",
     },
     {
+        year: "2022",
         school: "University of the Cordilleras",
-        location: "Baguio City",
-        degree: "Information and Communication Technology - Contact Center Services",
-        year: "August 2022",
-        honor: "With High Honors",
-        color: "teal",
-        icon: <Building2 size={30} />,
-    },
-];
-
-const awards = [
-    {
-        icon: <Medal size={30} />,
-        title: "Magna Cum Laude",
+        level: "Senior High School",
+        achievements: [
+            { text: "Information Communication Technology – Contact Center Services (ICT - CCS)", bold: false },
+            { text: "Academic Excellence Award – With High Honors", bold: true },
+        ],
+        date: "August 2022",
     },
     {
-        icon: <Trophy size={30} />,
-        title: "2025 BPI-DOST Innovation Awards Finalist",
-    },
-    {
-        icon: <GiAchievement size={30} />,
-        title: "Consistent Dean's Lister (2022-2026)",
-    },
-    {
-        icon: <Award size={30} />,
-        title: "Academic Excellence Award - With High Honors (2022)",
+        year: "2026",
+        school: "Saint Louis University",
+        level: "College",
+        achievements: [
+            { text: "Bachelor of Science in Information Technology", bold: false },
+            { text: "Magna Cum Laude", bold: true },
+        ],
+        date: "May 2026",
     },
 ];
 
 const Education = () => {
     return (
-        <section id="education" className="scroll-mt-24 px-35 max-w-8xl mx-auto bg-white dark:bg-black">
-            {/* EDUCATION */}
-            <h2 className="font-serif text-6xl font-bold text-pink-300 dark:text-pink-400">
-                Education
-            </h2>
+        <section
+            id="education"
+            className="relative w-full py-16 px-6 sm:px-10 bg-white dark:bg-black transition-colors duration-300 scroll-mt-24"
+        >
+            <div className="max-w-6xl mx-auto relative">
 
-            <div className="grid lg:grid-cols-3 gap-8 mt-2">
-                {/* Education Cards */}
-                <div className="lg:col-span-2 grid md:grid-cols-2 gap-8">
-                    {education.map((item, index) => (
-                        <div
-                            key={index}
-                            className={`rounded-3xl border p-8 transition-all duration-300
-                            ${
-                                item.color === "pink"
-                                    ? "border-gray-300 dark:border-gray-300"
-                                    : "border-gray-600 dark:border-gray-500"
-                            }
-                            bg-white dark:bg-zinc-900
-                            shadow-lg dark:shadow-none`}
+                {/* card */}
+                <div className="relative rounded-[32px] bg-[#dde3e4] dark:bg-[#26302f] shadow-xl dark:shadow-black/40 px-8 sm:px-14 pt-20 pb-14 transition-colors duration-300">
+
+                    {/* label tag */}
+                    <div
+                        className="absolute -top-7 left-10 sm:left-14"
+                        style={{ transform: "rotate(-4deg)" }}
+                    >
+                        {/* clip */}
+                        <svg
+                            viewBox="0 0 60 70"
+                            className="absolute -top-9 left-8 w-10 drop-shadow-md"
+                            aria-hidden="true"
                         >
-                            <div className="flex items-start gap-4 mb-6">
-                                <div
-                                    className={`w-16 h-16 rounded-full flex items-center justify-center text-white
-                                    ${
-                                        item.color === "pink"
-                                            ? "bg-pink-300 dark:bg-pink-400 text-black"
-                                            : "bg-teal-600 dark:bg-teal-500"
-                                    }`}
-                                >
-                                    {item.icon}
-                                </div>
+                            <ellipse cx="30" cy="14" rx="14" ry="12" fill="none" stroke="#c9c9c9" strokeWidth="4" className="dark:stroke-[#6b6b6b]" />
+                            <path
+                                d="M12 26 L48 26 L42 58 Q30 66 18 58 Z"
+                                fill="#d9dadb"
+                                stroke="#b7b8b9"
+                                strokeWidth="1.5"
+                                className="dark:fill-[#3a3a3a] dark:stroke-[#555]"
+                            />
+                            <rect x="16" y="26" width="28" height="8" fill="#c3c4c5" className="dark:fill-[#4a4a4a]" />
+                        </svg>
 
-                                <div>
-                                    <h3 className="font-semibold text-lg text-black dark:text-white">
-                                        {item.school}
-                                    </h3>
-                                    <p className="text-gray-500 dark:text-gray-400">
-                                        {item.location}
+                        <div className="bg-[#a99a76] dark:bg-[#5f5642] px-8 py-3 shadow-lg">
+                            <h2 className="font-display text-6xl font-bold tracking-wide text-[#2c2c2c] dark:text-[#ece6da]">
+                                Education
+                            </h2>
+                        </div>
+                    </div>
+
+                    {/* timeline */}
+                    <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8 relative">
+
+                        {/* connecting line (desktop only) */}
+                        <div className="hidden sm:block absolute top-[11px] left-[16.6%] right-[16.6%] h-px bg-[#928366]/50 dark:bg-[#a99a76]/40" />
+
+                        {educationData.map((edu) => (
+                            <div key={edu.year} className="flex flex-col items-center text-center">
+
+                                <MapPin
+                                    size={35}
+                                    className="relative z-10 text-[#928366] dark:text-[#c9b98f] fill-[#928366]/20 dark:fill-[#a99a76]/20 bg-[#dde3e4] dark:bg-[#26302f] rounded-full"
+                                />
+
+                                <span className="font-display text-4xl mt-2 text-black dark:text-[#ece6da]">
+                                    {edu.year}
+                                </span>
+
+                                <h3 className="font-bold text-base mt-1 text-black dark:text-white">
+                                    {edu.school}
+                                </h3>
+
+                                <p className="font-display text-base text-[#5c5c5c] dark:text-[#c8c8c8]">
+                                    {edu.level}
+                                </p>
+
+                                <div className="mt-4 w-full rounded-xl border border-[#a3b7b8] dark:border-[#5e6f70] bg-white/60 dark:bg-black/20 p-4 text-left min-h-[160px] flex flex-col justify-between">
+                                    <div className="space-y-3">
+                                        {edu.achievements.map((a, i) => (
+                                            <p
+                                                key={i}
+                                                className={`leading-snug text-black dark:text-[#e5e5e5] ${
+                                                    a.bold ? "font-semibold" : ""
+                                                }`}
+                                            >
+                                                {a.text}
+                                            </p>
+                                        ))}
+                                    </div>
+
+                                    <p className="text-[15px] text-[#6b6b6b] dark:text-[#a0a0a0] mt-3">
+                                        {edu.date}
                                     </p>
                                 </div>
-                            </div>
-
-                            <p className="text-lg leading-relaxed mb-8 text-black dark:text-gray-200">
-                                {item.degree}
-                            </p>
-
-                            <button
-                                className={`rounded-full px-6 py-2 font-medium transition-colors
-                                ${
-                                    item.color === "pink"
-                                        ? "bg-pink-50 text-pink-500 border border-pink-300 dark:bg-pink-400 dark:text-black dark:border-pink-400"
-                                        : "bg-teal-50 text-teal-700 border border-teal-600 dark:bg-teal-500 dark:text-white dark:border-teal-500"
-                                }`}
-                            >
-                                {item.honor}
-                            </button>
-
-                            <p className="text-lg text-black dark:text-gray-200 pt-10">{item.year}</p>
-                        </div>
-                    ))}
-                </div>
-
-                {/* Awards */}
-                <div className="rounded-3xl border border-pink-300 dark:border-pink-300
-                bg-pink-50 dark:bg-pink-950/30 p-8 transition-all duration-300">
-                    <h3 className="text-xl font-semibold mb-8 text-black dark:text-white">
-                        Achievements & Awards
-                    </h3>
-
-                    <div className="space-y-4">
-                        {awards.map((award, index) => (
-                            <div
-                                key={index}
-                                className="flex items-center gap-4"
-                            >
-                                <div className="w-8 flex justify-center shrink-0 text-black dark:text-pink-300">
-                                    {award.icon}
-                                </div>
-
-                                <p className="leading-relaxed text-lg text-black dark:text-gray-200">
-                                    {award.title}
-                                </p>
                             </div>
                         ))}
                     </div>
                 </div>
-            </div>
 
-            {/* EXPERIENCE */}
-            <section className="mt-15">
-                <h2 className="font-serif text-6xl font-bold text-teal-700 dark:text-teal-400 mb-2">
-                        Experience
-                </h2>
-
-                <div className="flex items-start gap-10">
-
-                    {/* Timeline */}
-                    <div className="hidden md:flex items-center gap-10 w-40 shrink-0">
-                        <div className="w-[2px] h-85 bg-pink-300 dark:bg-pink-400"></div>
-
-                        <div className="text-right text-xl leading-tight text-black dark:text-gray-200">
-                            <p>January 2026</p>
-                            <p>to</p>
-                            <p>May 2026</p>
-                        </div>
-                    </div>
-
-                    {/* Card */}
-                    <div className="flex-1 rounded-3xl border border-gray-300 dark:border-gray-300 bg-white 
-                    dark:bg-zinc-900 shadow-lg dark:shadow-none transition-all duration-300 p-8">
-                        <div className="flex flex-col md:flex-row gap-8">
-
-                            {/* Logo */}
-                            <div className="flex justify-center md:items-center">
-                                <img
-                                    src={PMALogo}
-                                    alt="PMA Logo"
-                                    className="w-28 h-28 object-contain"
-                                />
-                            </div>
-
-                            {/* Content */}
-                            <div className="flex-1">
-                                <h3 className="text-2xl font-bold text-black dark:text-white">
-                                    Web Developer Intern
-                                </h3>
-
-                                <p className="mt-1 mb-2 text-lg">
-                                    <span className="font-medium text-teal-700 dark:text-teal-400">
-                                        Philippine Military Academy (PMA)
-                                    </span>
-                                    <span className="text-black dark:text-gray-300">
-                                        {" "}
-                                        - Baguio City
-                                    </span>
-                                </p>
-
-                                <ul className="list-disc pl-5 text-lg leading-relaxed text-black dark:text-gray-200">
-                                    <li>
-                                        Developed and maintained the PMA Admission System,
-                                        enhancing applicant registration and admission
-                                        workflows.
-                                    </li>
-
-                                    <li>
-                                        Improved the PMA Admin Portal, streamlining
-                                        applicant management, monitoring, and
-                                        administrative operations.
-                                    </li>
-
-                                    <li>
-                                        Implemented responsive web interfaces and backend
-                                        functionalities using React.js, Node.js, and
-                                        Tailwind CSS.
-                                    </li>
-
-                                    <li>
-                                        Configured and deployed the web application to an
-                                        Ubuntu-based production server.
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                {/* vertical side tab */}
+                <div className="hidden lg:flex absolute top-1/3 -right-3">
+                    <div className="w-6 h-28 bg-[#a99a76] dark:bg-[#5f5642] rounded-r-md shadow-md flex items-center justify-center">
+                        <span className="[writing-mode:vertical-rl] rotate-180 text-[11px] tracking-[0.2em] text-[#2c2c2c] dark:text-[#ece6da] font-medium">
+                            Education
+                        </span>
                     </div>
                 </div>
-            </section>
+            </div>
         </section>
     );
 };
