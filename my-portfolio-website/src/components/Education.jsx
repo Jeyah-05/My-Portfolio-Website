@@ -36,22 +36,22 @@ const Education = () => {
     return (
         <section
             id="education"
-            className="relative w-full py-16 px-6 sm:px-10 bg-white dark:bg-black transition-colors duration-300 scroll-mt-24"
+            className="relative w-full py-12 sm:py-16 px-4 sm:px-6 md:px-10 bg-white dark:bg-black transition-colors duration-300 scroll-mt-24"
         >
             <div className="max-w-6xl mx-auto relative">
 
                 {/* card */}
-                <div className="relative rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl bg-[#dde3e4] dark:bg-[#26302f] shadow-xl dark:shadow-black/40 px-8 sm:px-14 pt-20 pb-14 transition-colors duration-300">
+                <div className="relative rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl bg-[#dde3e4] dark:bg-[#26302f] shadow-xl dark:shadow-black/40 px-5 sm:px-8 md:px-14 pt-14 sm:pt-16 md:pt-20 pb-10 sm:pb-14 transition-colors duration-300">
 
                     {/* label tag */}
                     <div
-                        className="absolute -top-7 left-10 sm:left-14"
+                        className="absolute -top-5 left-5 sm:-top-7 sm:left-10 md:left-14"
                         style={{ transform: "rotate(-4deg)" }}
                     >
                         {/* clip */}
                         <svg
                             viewBox="0 0 60 70"
-                            className="absolute -top-9 left-8 w-10 drop-shadow-md"
+                            className="absolute -top-6 left-4 sm:-top-9 sm:left-8 w-7 sm:w-10 drop-shadow-md"
                             aria-hidden="true"
                         >
                             <ellipse cx="30" cy="14" rx="14" ry="12" fill="none" stroke="#c9c9c9" strokeWidth="4" className="dark:stroke-[#6b6b6b]" />
@@ -65,15 +65,15 @@ const Education = () => {
                             <rect x="16" y="26" width="28" height="8" fill="#c3c4c5" className="dark:fill-[#4a4a4a]" />
                         </svg>
 
-                        <div className="bg-[#a99a76] dark:bg-[#5f5642] px-8 py-3 shadow-lg">
-                            <h2 className="font-display text-6xl font-bold tracking-wide text-[#2c2c2c] dark:text-[#ece6da]">
+                        <div className="bg-[#a99a76] dark:bg-[#5f5642] px-4 py-2 sm:px-6 sm:py-2.5 md:px-8 md:py-3 shadow-lg">
+                            <h2 className="font-display text-3xl sm:text-4xl md:text-6xl font-bold tracking-wide text-[#2c2c2c] dark:text-[#ece6da] whitespace-nowrap">
                                 Education
                             </h2>
                         </div>
                     </div>
 
                     {/* timeline */}
-                    <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8 relative">
+                    <div className="mt-8 sm:mt-10 grid grid-cols-1 sm:grid-cols-3 gap-10 sm:gap-8 relative">
 
                         {/* connecting line */}
                         <div className="hidden sm:block absolute top-[11px] left-[16.6%] right-[16.6%] h-px bg-[#928366]/50 dark:bg-[#a99a76]/40" />
@@ -82,19 +82,23 @@ const Education = () => {
                             <div key={edu.year} className="flex flex-col items-center text-center h-full">
 
                                 <MapPin
+                                    size={30}
+                                    className="relative z-10 text-[#928366] dark:text-[#c9b98f] fill-[#928366]/20 dark:fill-[#a99a76]/20 bg-[#dde3e4] dark:bg-[#26302f] rounded-full sm:hidden"
+                                />
+                                <MapPin
                                     size={35}
-                                    className="relative z-10 text-[#928366] dark:text-[#c9b98f] fill-[#928366]/20 dark:fill-[#a99a76]/20 bg-[#dde3e4] dark:bg-[#26302f] rounded-full"
+                                    className="relative z-10 text-[#928366] dark:text-[#c9b98f] fill-[#928366]/20 dark:fill-[#a99a76]/20 bg-[#dde3e4] dark:bg-[#26302f] rounded-full hidden sm:block"
                                 />
 
-                                <span className="font-display text-4xl mt-2 text-black dark:text-[#ece6da]">
+                                <span className="font-display text-3xl sm:text-4xl mt-2 text-black dark:text-[#ece6da]">
                                     {edu.year}
                                 </span>
 
-                                <h3 className="font-bold text-base mt-1 text-black dark:text-white">
+                                <h3 className="font-bold text-sm sm:text-base mt-1 text-black dark:text-white">
                                     {edu.school}
                                 </h3>
 
-                                <p className="font-display text-base text-[#5c5c5c] dark:text-[#c8c8c8]">
+                                <p className="font-display text-sm sm:text-base text-[#5c5c5c] dark:text-[#c8c8c8]">
                                     {edu.level}
                                 </p>
 
@@ -103,7 +107,7 @@ const Education = () => {
                                         {edu.achievements.map((a, i) => (
                                             <p
                                                 key={i}
-                                                className={`leading-snug text-black dark:text-[#e5e5e5] ${
+                                                className={`text-sm sm:text-base leading-snug text-black dark:text-[#e5e5e5] ${
                                                     a.bold ? "font-semibold" : ""
                                                 }`}
                                             >
@@ -112,7 +116,7 @@ const Education = () => {
                                         ))}
                                     </div>
 
-                                    <p className="text-[15px] text-[#6b6b6b] dark:text-[#a0a0a0] mt-3">
+                                    <p className="text-[13px] sm:text-[15px] text-[#6b6b6b] dark:text-[#a0a0a0] mt-3">
                                         {edu.date}
                                     </p>
                                 </div>
@@ -120,7 +124,7 @@ const Education = () => {
                         ))}
                     </div>
 
-                    {/* folder side tab */}
+                    {/* folder side tab — desktop only, unchanged */}
                     <div className="hidden lg:flex flex-col absolute bottom-0 right-0 translate-x-20/21">
                         <div className="w-6 h-10 bg-[#a99a76] dark:bg-[#5f5642] shadow-r-2xl rounded-tr-2xl" />
                         <div className="w-6 h-10 bg-[#f2ede1] dark:bg-[#3a3a3a] shadow-r-2xl" />
