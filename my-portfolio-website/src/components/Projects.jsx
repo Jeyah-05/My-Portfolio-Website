@@ -6,12 +6,12 @@ import projects from "../data/projects";
 
 function circularOffset(index, current, total) {
     let diff = index - current;
-    diff = ((diff % total) + total) % total; // normalize to [0, total)
+    diff = ((diff % total) + total) % total;
     if (diff > total / 2) diff -= total;
     return diff;
 }
 
-// How many cards to keep interactive/visible on either side of the center.
+// How many cards visible on either side of the center.
 const MAX_VISIBLE_OFFSET = 2;
 
 const useBreakpoint = () => {
@@ -58,148 +58,182 @@ const Projects = () => {
     return (
         <section
             id="projects"
-            className="max-w-8xl mx-auto py-25 px-6 dark:bg-black overflow-hidden"
+            className="relative w-full py-16 px-6 sm:px-10 bg-white dark:bg-black transition-colors duration-300 scroll-mt-20 overflow-x-hidden"
         >
-            <h2 className="font-serif text-4xl sm:text-6xl font-bold text-pink-300 dark:text-pink-400 ml-6 sm:ml-28">
-                Projects
-            </h2>
+            <div className="max-w-6xl mx-auto relative">
 
-            <div
-                className="relative flex justify-center items-center select-none"
-                style={{ height: stageHeight }}
-            >
-                {/* LEFT ARROW — z-40 so it always sits above every card,
-                    including the one nearest the edge. */}
-                <button
-                    onClick={goPrev}
-                    aria-label="Previous project"
-                    className="absolute left-0 sm:left-4 z-40 p-2 rounded-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur hover:scale-110 transition"
-                >
-                    <ChevronLeft
-                        className="text-teal-600 hover:text-pink-400 transition"
-                        size={36}
-                    />
-                </button>
+                {/* card */}
+                <div className="relative rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl bg-[#dde3e4] dark:bg-[#26302f] shadow-xl dark:shadow-black/40 px-8 sm:px-14 pt-10 pb-5 transition-colors duration-300">
 
-                {/* RIGHT ARROW — same z-40 fix. */}
-                <button
-                    onClick={goNext}
-                    aria-label="Next project"
-                    className="absolute right-0 sm:right-4 z-40 p-2 rounded-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur hover:scale-110 transition"
-                >
-                    <ChevronRight
-                        className="text-teal-600 hover:text-pink-400 transition"
-                        size={36}
-                    />
-                </button>
+                    {/* label tag */}
+                    <div
+                        className="absolute -top-7 left-10 sm:left-14"
+                        style={{ transform: "rotate(-4deg)" }}
+                    >
+                        {/* clip */}
+                        <svg
+                            viewBox="0 0 60 70"
+                            className="absolute -top-9 left-8 w-10 drop-shadow-md"
+                            aria-hidden="true"
+                        >
+                            <ellipse cx="30" cy="14" rx="14" ry="12" fill="none" stroke="#c9c9c9" strokeWidth="4" className="dark:stroke-[#6b6b6b]" />
+                            <path
+                                d="M12 26 L48 26 L42 58 Q30 66 18 58 Z"
+                                fill="#d9dadb"
+                                stroke="#b7b8b9"
+                                strokeWidth="1.5"
+                                className="dark:fill-[#3a3a3a] dark:stroke-[#555]"
+                            />
+                            <rect x="16" y="26" width="28" height="8" fill="#c3c4c5" className="dark:fill-[#4a4a4a]" />
+                        </svg>
 
-                {/* Wraps the whole track  */}
-                <motion.div
-                    ref={dragTrackRef}
-                    className="relative w-full h-full flex justify-center items-center cursor-grab active:cursor-grabbing"
-                    drag="x"
-                    dragElastic={0.12}
-                    dragConstraints={{ left: 0, right: 0 }}
-                    dragSnapToOrigin
-                    onDragEnd={(_, info) => {
-                        const swipe = info.offset.x;
-                        const SWIPE_THRESHOLD = 60;
-                        if (swipe < -SWIPE_THRESHOLD) goNext();
-                        else if (swipe > SWIPE_THRESHOLD) goPrev();
-                    }}
-                >
-                    {projects.map((project, index) => {
-                        const offset = circularOffset(index, current, total);
-                        const absOffset = Math.abs(offset);
-                        const isCenter = offset === 0;
+                        <div className="bg-[#a99a76] dark:bg-[#5f5642] px-8 py-3 shadow-lg">
+                            <h2 className="font-display text-6xl font-bold tracking-wide text-[#2c2c2c] dark:text-[#ece6da]">
+                                Projects
+                            </h2>
+                        </div>
+                    </div>
 
-                        // With an even project count, one offset (exactly
-                        // total/2) has no true "opposite" partner — the math
-                        // always resolves it to the right side, which is
-                        // what caused the lopsided stack. Hiding that single
-                        // ambiguous card keeps the layout symmetric no
-                        // matter how many projects you add.
-                        const isAmbiguousBoundary =
-                            total % 2 === 0 && absOffset === total / 2;
-                        const withinWindow =
-                            absOffset <= MAX_VISIBLE_OFFSET && !isAmbiguousBoundary;
-                        const hiddenOnMobile = isMobile && !isCenter;
+                    {/* carousel */}
+                    <div
+                        className="relative flex justify-center items-center select-none"
+                        style={{ height: stageHeight }}
+                    >
+                        {/* LEFT ARROW */}
+                        <button
+                            onClick={goPrev}
+                            aria-label="Previous project"
+                            className="absolute left-0 sm:left-4 z-40 p-2 rounded-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur hover:scale-110 transition"
+                        >
+                            <ChevronLeft
+                                className="text-[#a3b7b8] hover:text-[#a99a76] transition"
+                                size={36}
+                            />
+                        </button>
 
-                        const scale = isCenter
-                            ? 1
-                            : Math.max(0.72, 1 - absOffset * 0.14);
-                        const opacity = isCenter
-                            ? 1
-                            : hiddenOnMobile
-                            ? 0
-                            : withinWindow
-                            ? Math.max(0.25, 0.65 - (absOffset - 1) * 0.25)
-                            : 0;
+                        {/* RIGHT ARROW */}
+                        <button
+                            onClick={goNext}
+                            aria-label="Next project"
+                            className="absolute right-0 sm:right-4 z-40 p-2 rounded-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur hover:scale-110 transition"
+                        >
+                            <ChevronRight
+                                className="text-[#a3b7b8] hover:text-[#a99a76] transition"
+                                size={36}
+                            />
+                        </button>
 
-                        return (
-                            <motion.div
+                        {/* Wraps the whole track */}
+                        <motion.div
+                            ref={dragTrackRef}
+                            className="relative w-full h-full flex justify-center items-center cursor-grab active:cursor-grabbing"
+                            style={{
+                                maskImage:
+                                    "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+                                WebkitMaskImage:
+                                    "linear-gradient(to right, transparent, black 8%, black 92%, transparent)",
+                            }}
+                            drag="x"
+                            dragElastic={0.12}
+                            dragConstraints={{ left: 0, right: 0 }}
+                            dragSnapToOrigin
+                            onDragEnd={(_, info) => {
+                                const swipe = info.offset.x;
+                                const SWIPE_THRESHOLD = 60;
+                                if (swipe < -SWIPE_THRESHOLD) goNext();
+                                else if (swipe > SWIPE_THRESHOLD) goPrev();
+                            }}
+                        >
+                            {projects.map((project, index) => {
+                                const offset = circularOffset(index, current, total);
+                                const absOffset = Math.abs(offset);
+                                const isCenter = offset === 0;
+
+                                const isAmbiguousBoundary =
+                                    total % 2 === 0 && absOffset === total / 2;
+                                const withinWindow =
+                                    absOffset <= MAX_VISIBLE_OFFSET && !isAmbiguousBoundary;
+                                const hiddenOnMobile = isMobile && !isCenter;
+
+                                const scale = isCenter
+                                    ? 1
+                                    : Math.max(0.72, 1 - absOffset * 0.14);
+                                const opacity = isCenter
+                                    ? 1
+                                    : hiddenOnMobile
+                                    ? 0
+                                    : withinWindow
+                                    ? Math.max(0.25, 0.65 - (absOffset - 1) * 0.25)
+                                    : 0;
+
+                                return (
+                                    <motion.div
+                                        key={project.title}
+                                        className="absolute top-1/2"
+                                        style={{
+                                            left: "50%",
+                                            width: cardWidth,
+                                            zIndex: 20 - absOffset,
+                                            pointerEvents:
+                                                isCenter || (!hiddenOnMobile && withinWindow)
+                                                    ? "auto"
+                                                    : "none",
+                                        }}
+                                        animate={{
+                                            x: offset * spacing - cardWidth / 2,
+                                            y: "-50%",
+                                            scale,
+                                            opacity,
+                                        }}
+                                        transition={{
+                                            type: "spring",
+                                            stiffness: 260,
+                                            damping: 30,
+                                            mass: 0.8,
+                                        }}
+                                        onClick={() => {
+                                            if (!isCenter) goTo(index);
+                                        }}
+                                    >
+                                        <ProjectCard
+                                            project={project}
+                                            cardWidth={cardWidth}
+                                            interactive={isCenter}
+                                        />
+                                    </motion.div>
+                                );
+                            })}
+                        </motion.div>
+                    </div>
+
+                    {/* DOTS */}
+                    <div className="flex justify-center gap-2 mt-4">
+                        {projects.map((project, index) => (
+                            <button
                                 key={project.title}
-                                className="absolute top-1/2"
-                                style={{
-                                    left: "50%",
-                                    width: cardWidth,
-                                    // Capped well below the arrow buttons'
-                                    // z-40 so cards can never cover them.
-                                    zIndex: 20 - absOffset,
-                                    pointerEvents:
-                                        isCenter || (!hiddenOnMobile && withinWindow)
-                                            ? "auto"
-                                            : "none",
-                                }}
-                                animate={{
-                                    x: offset * spacing - cardWidth / 2,
-                                    y: "-50%",
-                                    scale,
-                                    opacity,
-                                }}
-                                transition={{
-                                    type: "spring",
-                                    stiffness: 260,
-                                    damping: 30,
-                                    mass: 0.8,
-                                }}
-                                onClick={() => {
-                                    if (!isCenter) goTo(index);
-                                }}
-                            >
-                                <ProjectCard
-                                    project={project}
-                                    cardWidth={cardWidth}
-                                    interactive={isCenter}
-                                />
-                            </motion.div>
-                        );
-                    })}
-                </motion.div>
-            </div>
+                                onClick={() => goTo(index)}
+                                aria-label={`Go to ${project.title}`}
+                                className={`h-2 rounded-full transition-all duration-300 ${
+                                    index === current
+                                        ? "w-6 bg-[#a99a76] dark:bg-[#5f5642]"
+                                        : "w-2 bg-white dark:bg-[#ece6da hover:bg-[#ece6da]"
+                                }`}
+                            />
+                        ))}
+                    </div>
 
-            {/* DOTS */}
-            <div className="flex justify-center gap-2">
-                {projects.map((project, index) => (
-                    <button
-                        key={project.title}
-                        onClick={() => goTo(index)}
-                        aria-label={`Go to ${project.title}`}
-                        className={`h-2 rounded-full transition-all duration-300 ${
-                            index === current
-                                ? "w-6 bg-teal-600 dark:bg-teal-400"
-                                : "w-2 bg-pink-200 dark:bg-zinc-700 hover:bg-pink-300"
-                        }`}
-                    />
-                ))}
+                    {/* foder side tab */}
+                    <div className="hidden lg:flex flex-col absolute bottom-0 right-0 translate-x-20/21">
+                        <div className="w-6 h-10 bg-[#a99a76] dark:bg-[#5f5642] shadow-r-2xl rounded-tr-2xl" />
+                        <div className="w-6 h-10 bg-[#f2ede1] dark:bg-[#3a3a3a] shadow-r-2xl" />
+                        <div className="w-6 h-28 bg-[#dde3e4] dark:bg-[#26302f] shadow-r-2xl rounded-br-2xl flex items-center justify-center">
+                            <span className="[writing-mode:vertical-rl] rotate-180 text-[11px] tracking-[0.2em] text-[#2c2c2c] dark:text-[#ece6da] font-medium">
+                                Projects
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <p className="text-center italic mt-10 font-serif text-xl sm:text-2xl dark:text-white">
-                <span className="text-pink-300">“Art</span> fuels my
-                imagination;{" "}
-                <span className="text-teal-600">Code</span> brings it to
-                life”
-            </p>
         </section>
     );
 };
@@ -208,9 +242,9 @@ function ProjectCard({ project, cardWidth, interactive }) {
     return (
         <div
             className="group relative overflow-hidden rounded-3xl
-            border-2 border-pink-300 dark:border-teal-500
+            border-2 border-[#a99a76] dark:border-[#5f5642]
             bg-white dark:bg-zinc-900
-            shadow-2xl transition-shadow duration-500 hover:shadow-pink-300/30"
+            shadow-2xl transition-shadow duration-500 hover:shadow-[#a99a76]-300/30"
             style={{ width: cardWidth }}
         >
             <h2 className="text-center py-5 font-serif text-3xl sm:text-5xl font-bold text-teal-700 dark:text-teal-400 px-4 truncate">
@@ -230,9 +264,7 @@ function ProjectCard({ project, cardWidth, interactive }) {
                 </p>
             </div>
 
-            {/* Hover / focus overlay — only meaningfully interactive on the
-                centered card; side cards still show it faintly on hover but
-                clicks are routed to `goTo` by the parent instead. */}
+            {/* Hover */}
             <div
                 className={`absolute inset-0 bg-black/80
                 opacity-0 transition duration-300
@@ -251,7 +283,7 @@ function ProjectCard({ project, cardWidth, interactive }) {
                     {project.tech?.map((tech) => (
                         <span
                             key={tech}
-                            className="bg-pink-400 text-white px-3 py-1 rounded-full text-sm"
+                            className="bg-[#a99a76] text-white px-3 py-1 rounded-full text-sm"
                         >
                             {tech}
                         </span>
@@ -266,10 +298,11 @@ function ProjectCard({ project, cardWidth, interactive }) {
                             rel="noopener noreferrer"
                             onClick={(e) => e.stopPropagation()}
                             className="flex items-center gap-2
-                            bg-teal-600 hover:bg-teal-700
+                            bg-[#a3b7b8] hover:bg-[#3d4a4b]
                             text-white
                             px-5 py-2 rounded-full transition"
                         >
+                            <FaGithub size={18} />
                             View Project
                         </a>
                     )}

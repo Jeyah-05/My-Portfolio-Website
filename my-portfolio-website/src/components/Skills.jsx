@@ -1,281 +1,186 @@
-import {
-    FaHtml5,
-    FaCss3Alt,
-    FaJs,
-    FaJava,
-    FaPython,
-    FaPhp,
-    FaReact,
-    FaNodeJs,
-    FaGithub,
-    FaGitAlt,
-    FaFigma,
-    FaWordpress,
-    FaWindows,
-    FaLinux,
-    FaDatabase,
-    FaCloud,
-} from "react-icons/fa";
-
-import SkillImage1 from "../assets/image1.jpg";
+import image1 from "../assets/image1.png";
+import image2 from "../assets/image2.png";
+import image3 from "../assets/image3.png";
+import image4 from "../assets/image4.png";
 
 const skillCategories = [
     {
         title: "Frontend Languages",
-        color: "pink",
         skills: [
-            {
-                name: "HTML",
-                icon: <FaHtml5 />,
-                color: "text-orange-500",
-            },
-            {
-                name: "CSS",
-                icon: <FaCss3Alt />,
-                color: "text-blue-500",
-            },
-            {
-                name: "JavaScript",
-                icon: <FaJs />,
-                color: "text-yellow-400",
-            },
+            { name: "JavaScript", icon: "javascript/javascript-original" },
+            { name: "HTML", icon: "html5/html5-original" },
+            { name: "CSS", icon: "css3/css3-original" },
         ],
     },
-
     {
         title: "Backend Languages",
-        color: "teal",
         skills: [
-            {
-                name: "Java",
-                icon: <FaJava />,
-                color: "text-red-500",
-            },
-            {
-                name: "Python",
-                icon: <FaPython />,
-                color: "text-blue-500",
-            },
-            {
-                name: "PHP",
-                icon: <FaPhp />,
-                color: "text-indigo-500",
-            },
+            { name: "Java", icon: "java/java-original" },
+            { name: "Python", icon: "python/python-original" },
+            { name: "PHP", icon: "php/php-original" },
         ],
     },
-
     {
-        title: "Framework & Libraries",
-        color: "pink",
+        title: "Frameworks & Libraries",
         skills: [
-            {
-                name: "React",
-                icon: <FaReact />,
-                color: "text-cyan-400",
-            },
-            {
-                name: "Node.js",
-                icon: <FaNodeJs />,
-                color: "text-green-600",
-            },
-            {
-                name: "Express.js",
-                icon: (
-                    <span className="font-bold text-2xl">
-                        ex
-                    </span>
-                ),
-                color: "text-gray-700 dark:text-gray-200",
-            },
-            {
-                name: "Tailwind CSS",
-                icon: (
-                    <span className="font-bold text-xl">
-                        ≋
-                    </span>
-                ),
-                color: "text-cyan-400",
-            },
+            { name: "React.js", icon: "react/react-original" },
+            { name: "Node.js", icon: "nodejs/nodejs-original" },
+            { name: "Tailwind CSS", icon: "tailwindcss/tailwindcss-original" },
+            { name: "Express.js", icon: "express/express-original" },
         ],
     },
-
     {
         title: "Developer Tools",
-        color: "teal",
         skills: [
-            {
-                name: "GitHub",
-                icon: <FaGithub />,
-                color: "text-gray-800 dark:text-white",
-            },
-            {
-                name: "Git",
-                icon: <FaGitAlt />,
-                color: "text-orange-600",
-            },
-            {
-                name: "Figma",
-                icon: <FaFigma />,
-                color: "text-pink-500",
-            },
-            {
-                name: "WordPress",
-                icon: <FaWordpress />,
-                color: "text-blue-600",
-            },
+            { name: "Github", icon: "github/github-original" },
+            { name: "Git", icon: "git/git-original" },
+            { name: "Figma", icon: "figma/figma-original" },
+            { name: "WordPress", icon: "wordpress/wordpress-original" },
         ],
     },
-
     {
         title: "Databases & Cloud",
-        color: "pink",
         skills: [
-            {
-                name: "MySQL",
-                icon: <FaDatabase />,
-                color: "text-blue-500",
-            },
-            {
-                name: "Google Cloud",
-                icon: <FaCloud />,
-                color: "text-blue-500",
-            },
-            {
-                name: "AWS",
-                icon: (
-                    <span className="font-bold text-xl">
-                        AWS
-                    </span>
-                ),
-                color: "text-orange-500",
-            },
+            { name: "MySQL", icon: "mysql/mysql-original" },
+            { name: "Azure", icon: "azure/azure-original" },
+            { name: "AWS", icon: "amazonwebservices/amazonwebservices-original-wordmark" },
+            { name: "Google Cloud", icon: "googlecloud/googlecloud-original" },
         ],
     },
-
     {
         title: "Operating Systems",
-        color: "teal",
         skills: [
-            {
-                name: "Windows",
-                icon: <FaWindows />,
-                color: "text-blue-500",
-            },
-            {
-                name: "Ubuntu",
-                icon: <FaLinux />,
-                color: "text-orange-500",
-            },
+            { name: "Windows", icon: "windows11/windows11-original" },
+            { name: "Ubuntu", icon: "ubuntu/ubuntu-plain" },
         ],
     },
 ];
+
+const DEVICON_BASE = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
 
 const Skills = () => {
     return (
         <section
             id="skills"
-            className="max-w-7xl mx-auto px-6 pb-20 scroll-mt-24"
+            className="relative w-full py-16 px-6 sm:px-10 bg-white dark:bg-black transition-colors duration-300 scroll-mt-24"
         >
-            {/* Main Layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-10 items-start">
+            <div className="max-w-6xl mx-auto relative">
 
-                {/* LEFT - SKILLS */}
-                <div>
-                    {/* Section Title */}
-                    <h2 className="font-serif text-6xl font-bold mb-6">
-                        <span className="text-teal-700 dark:text-teal-400">
-                            Technical
-                        </span>{" "}
-                        <span className="text-pink-300 dark:text-pink-400">
-                            Skills
-                        </span>
-                    </h2>
+                {/* card */}
+                <div className="relative rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl bg-[#ece6da] dark:bg-[#2c2b26] shadow-xl dark:shadow-black/40 px-8 sm:px-14 pt-20 pb-14 transition-colors duration-300">
 
-                    {/* Skills Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {skillCategories.map((category, index) => (
-                            <div
-                                key={index}
-                                className={`min-h-[120px] p-4 border ${
-                                    category.color === "pink"
-                                        ? "border-pink-300 dark:border-pink-400"
-                                        : "border-teal-600 dark:border-teal-400"
-                                } ${
-                                    category.color === "pink"
-                                        ? "bg-pink-50 dark:bg-pink-950/30"
-                                        : "bg-white dark:bg-zinc-900"
-                                } transition duration-300 hover:shadow-lg`}
-                            >
-                                {/* Category Title */}
-                                <h3 className="text-lg font-medium text-black dark:text-white mb-5">
-                                    {category.title}
-                                </h3>
+                    {/* label tag */}
+                    <div
+                        className="absolute -top-7 left-10 sm:left-14 z-20"
+                        style={{ transform: "rotate(-4deg)" }}
+                    >
+                        {/* clip */}
+                        <svg
+                            viewBox="0 0 60 70"
+                            className="absolute -top-9 left-8 w-10 drop-shadow-md"
+                            aria-hidden="true"
+                        >
+                            <ellipse cx="30" cy="14" rx="14" ry="12" fill="none" stroke="#c9c9c9" strokeWidth="4" className="dark:stroke-[#6b6b6b]" />
+                            <path
+                                d="M12 26 L48 26 L42 58 Q30 66 18 58 Z"
+                                fill="#d9dadb"
+                                stroke="#b7b8b9"
+                                strokeWidth="1.5"
+                                className="dark:fill-[#3a3a3a] dark:stroke-[#555]"
+                            />
+                            <rect x="16" y="26" width="28" height="8" fill="#c3c4c5" className="dark:fill-[#4a4a4a]" />
+                        </svg>
 
-                                {/* Skills */}
-                                <div className="flex flex-wrap justify-center items-center gap-x-8 gap-y-5">
-                                    {category.skills.map(
-                                        (skill, skillIndex) => (
-                                            <div
-                                                key={skillIndex}
-                                                className="flex flex-col items-center gap-2 min-w-[60px]"
-                                            >
-                                                <div
-                                                    className={`text-3xl ${skill.color}`}
-                                                >
-                                                    {skill.icon}
-                                                </div>
+                        <div className="bg-[#a3b7b8] dark:bg-[#5f5642] px-8 py-3 shadow-lg">
+                            <h2 className="font-display text-6xl font-bold tracking-wide text-[#2c2c2c] dark:text-[#ece6da]">
+                                Technical Skills
+                            </h2>
+                        </div>
+                    </div>
 
-                                                <span className="text-sm text-black dark:text-gray-200 text-center">
-                                                    {skill.name}
-                                                </span>
-                                            </div>
-                                        )
-                                    )}
-                                </div>
+                    {/* main content */}
+                    <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-10">
+
+                        {/* Left Image */}
+                        <div className="flex items-center justify-center h-full">
+                            <img
+                                src={image1}
+                                alt="Code editor screenshot"
+                                className="w-full h-full max-h-[470px] min-h-[370px] rounded-xl shadow-lg border-4 border-[#a99a76] dark:border-[#5f5642] object-cover"
+                            />
+                        </div>
+
+                        {/* right column */}
+                        <div className="flex flex-col gap-10">
+
+                            {/* top thumbnails row */}
+                            <div className="hidden sm:flex justify-center gap-8">
+                                <img
+                                    src={image2}
+                                    alt="Skills visual 1"
+                                    className="w-40 h-28 object-cover rounded-lg shadow-md border-4 border-[#a3b7b8] dark:border-[#3d4a4b]"
+                                    style={{ transform: "rotate(-3deg)" }}
+                                />
+                                <img
+                                    src={image3}
+                                    alt="Skills visual 2"
+                                    className="w-40 h-28 object-cover rounded-lg shadow-md border-4 border-white dark:border-[#1e1d19]"
+                                    style={{ transform: "rotate(2deg)" }}
+                                />
+                                <img
+                                    src={image4}
+                                    alt="Skills visual 3"
+                                    className="w-40 h-28 object-cover rounded-lg shadow-md border-4 border-[#a99a76] dark:border-[#5f5642]"
+                                    style={{ transform: "rotate(-2deg)" }}
+                                />
                             </div>
-                        ))}
+
+                            {/* categories grid */}
+                            <div className="grid grid-cols-1 sm:grid-cols-2 pl-7 gap-x-15 gap-y-8">
+                                {skillCategories.map((category) => (
+                                    <div key={category.title}>
+                                        <div className="inline-block bg-[#a3b7b8] dark:bg-[#3d4a4b] px-4 py-1.5 mb-4 rounded-sm shadow-sm">
+                                            <h3 className="font-bold text-base text-[#1f2a24] dark:text-[#ece6da]">
+                                                {category.title}
+                                            </h3>
+                                        </div>
+
+                                        <div className="flex flex-wrap">
+                                            {category.skills.map((skill) => (
+                                                <div
+                                                    key={skill.name}
+                                                    className="flex flex-col items-center gap-2 w-16"
+                                                >
+                                                    <div className="w-11 h-11 rounded-xl bg-white dark:bg-[#1e1d19] shadow-sm flex items-center justify-center p-2">
+                                                        <img
+                                                            src={`${DEVICON_BASE}/${skill.icon}.svg`}
+                                                            alt={skill.name}
+                                                            className="w-full h-full object-contain"
+                                                            loading="lazy"
+                                                        />
+                                                    </div>
+                                                    <span className="text-[13px] text-center leading-tight text-[#2c2c2c] dark:text-[#e5e5e5]">
+                                                        {skill.name}
+                                                    </span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                {/* RIGHT - IMAGE COLLAGE */}
-                <div className="hidden lg:grid grid-cols-2 gap-2 h-[520px] pt-25">
-
-                    {/* Top Left - Tall */}
-                    <div className="row-span-2 overflow-hidden rounded-xl">
-                        <img
-                            src={SkillImage1}
-                            alt="Web development"
-                            className="w-full h-full object-cover transition duration-500 hover:scale-105"
-                        />
+                {/* folder side tab */}
+                <div className="hidden lg:flex flex-col absolute bottom-0 right-0 translate-x-20/21">
+                    <div className="w-6 h-10 bg-[#a99a76] dark:bg-[#5f5642] shadow-r-2xl rounded-tr-2xl" />
+                    <div className="w-6 h-10 bg-[#a3b7b8] dark:bg-[#3d4a4b] shadow-r-2xl" />
+                    <div className="w-6 h-28 bg-[#ece6da] dark:bg-[#2c2b26] shadow-r-2xl rounded-br-2xl flex items-center justify-center">
+                        <span className="[writing-mode:vertical-rl] rotate-180 text-[11px] tracking-[0.2em] text-[#2c2c2c] dark:text-[#ece6da] font-medium">
+                            Skills
+                        </span>
                     </div>
-
-                    {/* Top Right */}
-                    <div className="overflow-hidden rounded-xl">
-                        <img
-                            src={SkillImage1}
-                            alt="Coding"
-                            className="w-full h-full object-cover transition duration-500 hover:scale-105"
-                        />
-                    </div>
-
-                    {/* Bottom Right */}
-                    <div className="row-span-2 overflow-hidden rounded-xl">
-                        <img
-                            src={SkillImage1}
-                            alt="Technology"
-                            className="w-full h-full object-cover transition duration-500 hover:scale-105"
-                        />
-                    </div>
-
-                    {/* Bottom Left */}
-                    <div className="overflow-hidden rounded-xl">
-                        <img
-                            src={SkillImage1}
-                            alt="Programming"
-                            className="w-full h-full object-cover transition duration-500 hover:scale-105"
-                        />
-                    </div>
-
                 </div>
             </div>
         </section>

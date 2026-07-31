@@ -41,7 +41,7 @@ const Education = () => {
             <div className="max-w-6xl mx-auto relative">
 
                 {/* card */}
-                <div className="relative rounded-[32px] bg-[#dde3e4] dark:bg-[#26302f] shadow-xl dark:shadow-black/40 px-8 sm:px-14 pt-20 pb-14 transition-colors duration-300">
+                <div className="relative rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl bg-[#dde3e4] dark:bg-[#26302f] shadow-xl dark:shadow-black/40 px-8 sm:px-14 pt-20 pb-14 transition-colors duration-300">
 
                     {/* label tag */}
                     <div
@@ -75,11 +75,11 @@ const Education = () => {
                     {/* timeline */}
                     <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-12 sm:gap-8 relative">
 
-                        {/* connecting line (desktop only) */}
+                        {/* connecting line */}
                         <div className="hidden sm:block absolute top-[11px] left-[16.6%] right-[16.6%] h-px bg-[#928366]/50 dark:bg-[#a99a76]/40" />
 
                         {educationData.map((edu) => (
-                            <div key={edu.year} className="flex flex-col items-center text-center">
+                            <div key={edu.year} className="flex flex-col items-center text-center h-full">
 
                                 <MapPin
                                     size={35}
@@ -98,7 +98,7 @@ const Education = () => {
                                     {edu.level}
                                 </p>
 
-                                <div className="mt-4 w-full rounded-xl border border-[#a3b7b8] dark:border-[#5e6f70] bg-white/60 dark:bg-black/20 p-4 text-left min-h-[160px] flex flex-col justify-between">
+                                <div className="mt-4 w-full flex-1 rounded-xl border border-[#a3b7b8] dark:border-[#5e6f70] bg-white/60 dark:bg-black/20 p-4 text-left flex flex-col justify-between">
                                     <div className="space-y-3">
                                         {edu.achievements.map((a, i) => (
                                             <p
@@ -119,14 +119,16 @@ const Education = () => {
                             </div>
                         ))}
                     </div>
-                </div>
 
-                {/* vertical side tab */}
-                <div className="hidden lg:flex absolute top-1/3 -right-3">
-                    <div className="w-6 h-28 bg-[#a99a76] dark:bg-[#5f5642] rounded-r-md shadow-md flex items-center justify-center">
-                        <span className="[writing-mode:vertical-rl] rotate-180 text-[11px] tracking-[0.2em] text-[#2c2c2c] dark:text-[#ece6da] font-medium">
-                            Education
-                        </span>
+                    {/* folder side tab */}
+                    <div className="hidden lg:flex flex-col absolute bottom-0 right-0 translate-x-20/21">
+                        <div className="w-6 h-10 bg-[#a99a76] dark:bg-[#5f5642] shadow-r-2xl rounded-tr-2xl" />
+                        <div className="w-6 h-10 bg-[#f2ede1] dark:bg-[#3a3a3a] shadow-r-2xl" />
+                        <div className="w-6 h-28 bg-[#dde3e4] dark:bg-[#26302f] shadow-r-2xl rounded-br-2xl flex items-center justify-center">
+                            <span className="[writing-mode:vertical-rl] rotate-180 text-[11px] tracking-[0.2em] text-[#2c2c2c] dark:text-[#ece6da] font-medium">
+                                Education
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
