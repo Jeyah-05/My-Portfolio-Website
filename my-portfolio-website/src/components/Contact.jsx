@@ -7,11 +7,13 @@ const socialsLeft = [
         icon: <FaGithub size={20} />,
         label: "Github",
         detail: "github.com/Jeyah-05",
+        href: "https://github.com/Jeyah-05",
     },
     {
         icon: <FaLinkedin size={20} />,
         label: "LinkedIn",
         detail: "linkedin.com/in/jhea-jhana-prudencio-a6a5a1371/",
+        href: "https://linkedin.com/in/jhea-jhana-prudencio-a6a5a1371/",
     },
 ];
 
@@ -20,16 +22,23 @@ const socialsRight = [
         icon: <FaFacebook size={20} />,
         label: "Facebook",
         detail: "facebook.com/jheajhana.prudencio",
+        href: "https://facebook.com/jheajhana.prudencio",
     },
     {
         icon: <FaInstagram size={20} />,
         label: "Instagram",
         detail: "https://www.instagram.com/jeyahprudy/",
+        href: "https://www.instagram.com/jeyahprudy/",
     },
 ];
 
-const SocialCard = ({ icon, label, detail }) => (
-    <div className="flex items-center gap-3 rounded-2xl border border-[#a3b7b8] dark:border-[#3d4a4b] bg-white dark:bg-[#151614] px-4 py-3 shadow-sm dark:shadow-black/30 transition-colors duration-300">
+const SocialCard = ({ icon, label, detail, href }) => (
+    <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center gap-3 rounded-2xl border border-[#a3b7b8] dark:border-[#3d4a4b] bg-white dark:bg-[#151614] px-4 py-3 shadow-sm dark:shadow-black/30 transition-colors duration-300 hover:border-[#a99a76] dark:hover:border-[#c9b98f] hover:shadow-md cursor-pointer"
+    >
         <div className="w-9 h-9 shrink-0 rounded-full bg-black dark:bg-white text-white dark:text-black flex items-center justify-center">
             {icon}
         </div>
@@ -41,14 +50,14 @@ const SocialCard = ({ icon, label, detail }) => (
                 {detail}
             </p>
         </div>
-    </div>
+    </a>
 );
 
 const Contact = () => {
     return (
         <section
             id="contact"
-            className="w-full bg-white dark:bg-black text-black dark:text-white transition-colors duration-300 scroll-mt-5"
+            className="w-full bg-white dark:bg-black text-black dark:text-white transition-colors duration-300 scroll-mt-10"
         >
             {/* TOP */}
             <div className="px-6 pt-16 pb-14">
@@ -107,7 +116,10 @@ const Contact = () => {
             <h3 className="font-bold text-lg mb-2 text-[#1f2a24] dark:text-white">
                 Email
             </h3>
-            <a>
+            <a
+                href="mailto:jhanaprudencio05@gmail.com"
+                className="text-[15px] text-[#1f2a24] dark:text-[#e5e5e5] hover:underline"
+            >
                 jhanaprudencio05@gmail.com
             </a>
         </div>
@@ -120,12 +132,18 @@ const Contact = () => {
             <h3 className="font-bold text-lg mb-2 text-[#1f2a24] dark:text-white">
                 Phone Number
             </h3>
-            <p className="text-[15px] text-[#1f2a24] dark:text-[#e5e5e5]">
+            <a
+                href="tel:+639106388971"
+                className="text-[15px] text-[#1f2a24] dark:text-[#e5e5e5] hover:underline"
+            >
                 (+63) 910 638 8971
-            </p>
-            <p className="text-[15px] text-[#1f2a24] dark:text-[#e5e5e5]">
+            </a>
+            <a
+                href="tel:+639345335974"
+                className="text-[15px] text-[#1f2a24] dark:text-[#e5e5e5] hover:underline"
+            >
                 (+63) 934 533 5974
-            </p>
+            </a>
         </div>
 
         {/* Location */}
