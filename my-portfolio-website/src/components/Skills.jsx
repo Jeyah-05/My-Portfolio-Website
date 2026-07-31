@@ -62,22 +62,22 @@ const Skills = () => {
     return (
         <section
             id="skills"
-            className="relative w-full py-16 px-6 sm:px-10 bg-white dark:bg-black transition-colors duration-300 scroll-mt-24"
+            className="relative w-full py-10 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-10 bg-white dark:bg-black transition-colors duration-300 scroll-mt-24"
         >
             <div className="max-w-6xl mx-auto relative">
 
                 {/* card */}
-                <div className="relative rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl bg-[#ece6da] dark:bg-[#2c2b26] shadow-xl dark:shadow-black/40 px-8 sm:px-14 pt-20 pb-14 transition-colors duration-300">
+                <div className="relative rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl bg-[#ece6da] dark:bg-[#2c2b26] shadow-xl dark:shadow-black/40 px-4 sm:px-8 lg:px-14 pt-16 sm:pt-20 pb-8 sm:pb-14 transition-colors duration-300">
 
                     {/* label tag */}
                     <div
-                        className="absolute -top-7 left-10 sm:left-14 z-20"
+                        className="absolute -top-5 sm:-top-7 left-4 sm:left-10 lg:left-14 z-20"
                         style={{ transform: "rotate(-4deg)" }}
                     >
                         {/* clip */}
                         <svg
                             viewBox="0 0 60 70"
-                            className="absolute -top-9 left-8 w-10 drop-shadow-md"
+                            className="absolute -top-6 sm:-top-9 left-4 sm:left-8 w-7 sm:w-10 drop-shadow-md"
                             aria-hidden="true"
                         >
                             <ellipse cx="30" cy="14" rx="14" ry="12" fill="none" stroke="#c9c9c9" strokeWidth="4" className="dark:stroke-[#6b6b6b]" />
@@ -91,18 +91,17 @@ const Skills = () => {
                             <rect x="16" y="26" width="28" height="8" fill="#c3c4c5" className="dark:fill-[#4a4a4a]" />
                         </svg>
 
-                        <div className="bg-[#a3b7b8] dark:bg-[#5f5642] px-8 py-3 shadow-lg">
-                            <h2 className="font-display text-6xl font-bold tracking-wide text-[#2c2c2c] dark:text-[#ece6da]">
+                        <div className="bg-[#a3b7b8] dark:bg-[#5f5642] px-4 sm:px-6 lg:px-8 py-2 sm:py-3 shadow-lg">
+                            <h2 className="font-display text-3xl sm:text-4xl lg:text-6xl font-bold tracking-wide text-[#2c2c2c] dark:text-[#ece6da]">
                                 Technical Skills
                             </h2>
                         </div>
                     </div>
 
                     {/* main content */}
-                    <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-6 lg:gap-10">
 
-                        {/* Left Image */}
-                        <div className="flex items-center justify-center h-full">
+                        <div className="hidden lg:flex items-center justify-center h-full">
                             <img
                                 src={image1}
                                 alt="Code editor screenshot"
@@ -111,10 +110,10 @@ const Skills = () => {
                         </div>
 
                         {/* right column */}
-                        <div className="flex flex-col gap-10">
+                        <div className="flex flex-col gap-6 lg:gap-10">
 
-                            {/* top thumbnails row */}
-                            <div className="hidden sm:flex justify-center gap-8">
+                            {/* top thumbnails row in desktop*/}
+                            <div className="hidden lg:flex justify-center gap-8">
                                 <img
                                     src={image2}
                                     alt="Skills visual 1"
@@ -136,16 +135,16 @@ const Skills = () => {
                             </div>
 
                             {/* categories grid */}
-                            <div className="grid grid-cols-1 sm:grid-cols-2 pl-7 gap-x-15 gap-y-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 pl-0 lg:pl-7 gap-x-6 sm:gap-x-10 lg:gap-x-15 gap-y-6 lg:gap-y-8">
                                 {skillCategories.map((category) => (
-                                    <div key={category.title}>
+                                    <div key={category.title} className="text-center lg:text-left">
                                         <div className="inline-block bg-[#a3b7b8] dark:bg-[#3d4a4b] px-4 py-1.5 mb-4 rounded-sm shadow-sm">
                                             <h3 className="font-bold text-base text-[#1f2a24] dark:text-[#ece6da]">
                                                 {category.title}
                                             </h3>
                                         </div>
 
-                                        <div className="flex flex-wrap">
+                                        <div className="flex flex-wrap justify-center lg:justify-start">
                                             {category.skills.map((skill) => (
                                                 <div
                                                     key={skill.name}

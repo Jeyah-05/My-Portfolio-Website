@@ -51,29 +51,40 @@ const Projects = () => {
         return () => window.removeEventListener("keydown", onKey);
     }, [goPrev, goNext]);
 
-    const cardWidth = isMobile ? 300 : 460;
+    const [viewportWidth, setViewportWidth] = useState(
+        typeof window !== "undefined" ? window.innerWidth : 1024
+    );
+    useEffect(() => {
+        const onResize = () => setViewportWidth(window.innerWidth);
+        window.addEventListener("resize", onResize);
+        return () => window.removeEventListener("resize", onResize);
+    }, []);
+
+    const isNarrowPhone = isMobile && viewportWidth < 380;
+
+    const cardWidth = isMobile ? (isNarrowPhone ? 250 : 300) : 460;
     const spacing = isMobile ? cardWidth * 0.55 : cardWidth * 0.72;
-    const stageHeight = isMobile ? 380 : 460;
+    const stageHeight = isMobile ? (isNarrowPhone ? 420 : 460) : 460;
 
     return (
         <section
             id="projects"
-            className="relative w-full py-16 px-6 sm:px-10 bg-white dark:bg-black transition-colors duration-300 scroll-mt-20 overflow-x-hidden"
+            className="relative w-full py-12 sm:py-16 px-4 sm:px-6 lg:px-10 bg-white dark:bg-black transition-colors duration-300 scroll-mt-20 overflow-x-hidden"
         >
             <div className="max-w-6xl mx-auto relative">
 
                 {/* card */}
-                <div className="relative rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl bg-[#dde3e4] dark:bg-[#26302f] shadow-xl dark:shadow-black/40 px-8 sm:px-14 pt-10 pb-5 transition-colors duration-300">
+                <div className="relative rounded-tl-3xl rounded-bl-3xl rounded-tr-3xl bg-[#dde3e4] dark:bg-[#26302f] shadow-xl dark:shadow-black/40 px-4 sm:px-8 lg:px-14 pt-14 sm:pt-10 pb-5 transition-colors duration-300">
 
                     {/* label tag */}
                     <div
-                        className="absolute -top-7 left-10 sm:left-14"
+                        className="absolute -top-5 sm:-top-7 left-4 sm:left-10 lg:left-14"
                         style={{ transform: "rotate(-4deg)" }}
                     >
                         {/* clip */}
                         <svg
                             viewBox="0 0 60 70"
-                            className="absolute -top-9 left-8 w-10 drop-shadow-md"
+                            className="absolute -top-6 sm:-top-9 left-4 sm:left-8 w-7 sm:w-10 drop-shadow-md"
                             aria-hidden="true"
                         >
                             <ellipse cx="30" cy="14" rx="14" ry="12" fill="none" stroke="#c9c9c9" strokeWidth="4" className="dark:stroke-[#6b6b6b]" />
@@ -87,8 +98,8 @@ const Projects = () => {
                             <rect x="16" y="26" width="28" height="8" fill="#c3c4c5" className="dark:fill-[#4a4a4a]" />
                         </svg>
 
-                        <div className="bg-[#a99a76] dark:bg-[#5f5642] px-8 py-3 shadow-lg">
-                            <h2 className="font-display text-6xl font-bold tracking-wide text-[#2c2c2c] dark:text-[#ece6da]">
+                        <div className="bg-[#a99a76] dark:bg-[#5f5642] px-4 sm:px-8 py-2 sm:py-3 shadow-lg">
+                            <h2 className="font-display text-3xl sm:text-6xl font-bold tracking-wide text-[#2c2c2c] dark:text-[#ece6da]">
                                 Projects
                             </h2>
                         </div>
@@ -103,11 +114,11 @@ const Projects = () => {
                         <button
                             onClick={goPrev}
                             aria-label="Previous project"
-                            className="absolute left-0 sm:left-4 z-40 p-2 rounded-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur hover:scale-110 transition"
+                            className="absolute left-0 sm:left-4 z-40 p-1.5 sm:p-2 rounded-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur hover:scale-110 transition"
                         >
                             <ChevronLeft
                                 className="text-[#a3b7b8] hover:text-[#a99a76] transition"
-                                size={36}
+                                size={isMobile ? 28 : 36}
                             />
                         </button>
 
@@ -115,11 +126,11 @@ const Projects = () => {
                         <button
                             onClick={goNext}
                             aria-label="Next project"
-                            className="absolute right-0 sm:right-4 z-40 p-2 rounded-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur hover:scale-110 transition"
+                            className="absolute right-0 sm:right-4 z-40 p-1.5 sm:p-2 rounded-full bg-white/70 dark:bg-zinc-900/70 backdrop-blur hover:scale-110 transition"
                         >
                             <ChevronRight
                                 className="text-[#a3b7b8] hover:text-[#a99a76] transition"
-                                size={36}
+                                size={isMobile ? 28 : 36}
                             />
                         </button>
 
@@ -199,6 +210,7 @@ const Projects = () => {
                                             project={project}
                                             cardWidth={cardWidth}
                                             interactive={isCenter}
+                                            isMobile={isMobile}
                                         />
                                     </motion.div>
                                 );
@@ -216,7 +228,7 @@ const Projects = () => {
                                 className={`h-2 rounded-full transition-all duration-300 ${
                                     index === current
                                         ? "w-6 bg-[#a99a76] dark:bg-[#5f5642]"
-                                        : "w-2 bg-white dark:bg-[#ece6da hover:bg-[#ece6da]"
+                                        : "w-2 bg-white dark:bg-[#ece6da] hover:bg-[#ece6da]"
                                 }`}
                             />
                         ))}
@@ -238,7 +250,7 @@ const Projects = () => {
     );
 };
 
-function ProjectCard({ project, cardWidth, interactive }) {
+function ProjectCard({ project, cardWidth, interactive, isMobile }) {
     return (
         <div
             className="group relative overflow-hidden rounded-3xl
@@ -247,11 +259,11 @@ function ProjectCard({ project, cardWidth, interactive }) {
             shadow-2xl transition-shadow duration-500 hover:shadow-[#a99a76]-300/30"
             style={{ width: cardWidth }}
         >
-            <h2 className="text-center py-5 font-serif text-3xl sm:text-5xl font-bold text-teal-700 dark:text-teal-400 px-4 truncate">
+            <h2 className="text-center py-3 sm:py-5 font-serif text-2xl sm:text-3xl lg:text-5xl font-bold text-teal-700 dark:text-teal-400 px-4 truncate">
                 {project.title}
             </h2>
 
-            <div className="px-6 pb-6">
+            <div className="px-4 sm:px-6 pb-4 sm:pb-6">
                 <img
                     src={project.image}
                     alt={project.title}
@@ -259,71 +271,123 @@ function ProjectCard({ project, cardWidth, interactive }) {
                     draggable={false}
                 />
 
-                <p className="font-semibold text-center mt-4 text-base sm:text-lg dark:text-white line-clamp-2">
+                <p className="font-semibold text-center mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg dark:text-white line-clamp-2">
                     {project.description}
                 </p>
+
+                {/* Mobile */}
+                {isMobile && (
+                    <div className="mt-3 flex flex-col items-center gap-3">
+                        <div className="flex flex-wrap justify-center gap-2">
+                            {project.tech?.map((tech) => (
+                                <span
+                                    key={tech}
+                                    className="bg-[#a99a76] text-white px-2.5 py-1 rounded-full text-xs"
+                                >
+                                    {tech}
+                                </span>
+                            ))}
+                        </div>
+
+                        <div className="flex flex-wrap justify-center gap-3">
+                            {project.github && (
+                                <a
+                                    href={project.github}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="flex items-center gap-2
+                                    bg-[#a3b7b8] hover:bg-[#3d4a4b]
+                                    text-white
+                                    px-4 py-2 rounded-full text-sm transition"
+                                >
+                                    <FaGithub size={16} />
+                                    View
+                                </a>
+                            )}
+
+                            {project.demo && (
+                                <a
+                                    href={project.demo}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    onClick={(e) => e.stopPropagation()}
+                                    className="flex items-center gap-2
+                                    bg-pink-400 hover:bg-pink-500
+                                    text-white
+                                    px-4 py-2 rounded-full text-sm transition"
+                                >
+                                    <ExternalLink size={16} />
+                                    Demo
+                                </a>
+                            )}
+                        </div>
+                    </div>
+                )}
             </div>
 
-            {/* Hover */}
-            <div
-                className={`absolute inset-0 bg-black/80
-                opacity-0 transition duration-300
-                flex flex-col justify-center items-center
-                p-8 ${interactive ? "group-hover:opacity-100" : ""}`}
-            >
-                <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 text-center">
-                    {project.title}
-                </h3>
+            {/* Hover (desktop only — unchanged) */}
+            {!isMobile && (
+                <div
+                    className={`absolute inset-0 bg-black/80
+                    opacity-0 transition duration-300
+                    flex flex-col justify-center items-center
+                    p-8 ${interactive ? "group-hover:opacity-100" : ""}`}
+                >
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 text-center">
+                        {project.title}
+                    </h3>
 
-                <p className="text-gray-300 text-center mb-5">
-                    {project.summary}
-                </p>
+                    <p className="text-gray-300 text-center mb-5">
+                        {project.summary}
+                    </p>
 
-                <div className="flex flex-wrap justify-center gap-2 mb-6">
-                    {project.tech?.map((tech) => (
-                        <span
-                            key={tech}
-                            className="bg-[#a99a76] text-white px-3 py-1 rounded-full text-sm"
-                        >
-                            {tech}
-                        </span>
-                    ))}
+                    <div className="flex flex-wrap justify-center gap-2 mb-6">
+                        {project.tech?.map((tech) => (
+                            <span
+                                key={tech}
+                                className="bg-[#a99a76] text-white px-3 py-1 rounded-full text-sm"
+                            >
+                                {tech}
+                            </span>
+                        ))}
+                    </div>
+
+                    <div className="flex flex-wrap justify-center gap-3">
+                        {project.github && (
+                            <a
+                                href={project.github}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="flex items-center gap-2
+                                bg-[#a3b7b8] hover:bg-[#3d4a4b]
+                                text-white
+                                px-5 py-2 rounded-full transition"
+                            >
+                                <FaGithub size={18} />
+                                View Project
+                            </a>
+                        )}
+
+                        {project.demo && (
+                            <a
+                                href={project.demo}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={(e) => e.stopPropagation()}
+                                className="flex items-center gap-2
+                                bg-pink-400 hover:bg-pink-500
+                                text-white
+                                px-5 py-3 rounded-full transition"
+                            >
+                                <ExternalLink size={18} />
+                                Live Demo
+                            </a>
+                        )}
+                    </div>
                 </div>
-
-                <div className="flex flex-wrap justify-center gap-3">
-                    {project.github && (
-                        <a
-                            href={project.github}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="flex items-center gap-2
-                            bg-[#a3b7b8] hover:bg-[#3d4a4b]
-                            text-white
-                            px-5 py-2 rounded-full transition"
-                        >
-                            <FaGithub size={18} />
-                            View Project
-                        </a>
-                    )}
-
-                    {project.demo && (
-                        <a
-                            href={project.demo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => e.stopPropagation()}
-                            className="flex items-center gap-2
-                            bg-pink-400 hover:bg-pink-500
-                            text-white
-                            px-5 py-3 rounded-full transition"
-                        >
-                            <ExternalLink size={18} />
-                            Live Demo
-                        </a>
-                    )}
-                </div>
-            </div>
+            )}
         </div>
     );
 }

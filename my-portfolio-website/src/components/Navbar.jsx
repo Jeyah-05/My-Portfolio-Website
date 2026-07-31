@@ -98,7 +98,7 @@ const Navbar = () => {
 
                     {/* Resume — label stays visible at every breakpoint */}
                     <a
-                        href="/resume.pdf"
+                        href="https://drive.google.com/file/d/1VKgcdqFhRWjZ2lct9-Lb5BGamYRaYvbA/view?usp=sharing"
                         target="_blank"
                         className="bg-[#a3b7b8] hover:bg-[#71979d] text-black px-3 py-2 sm:px-5 sm:py-2 rounded-full flex items-center gap-2 font-semibold text-sm sm:text-base dark:bg-[#3d4a4b] dark:text-white transition"
                     >
