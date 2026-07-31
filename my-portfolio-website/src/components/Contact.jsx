@@ -53,6 +53,22 @@ const SocialCard = ({ icon, label, detail, href }) => (
     </a>
 );
 
+const InfoCard = ({ icon, label, children }) => (
+    <div className="flex items-center gap-3 rounded-2xl border border-white/40 dark:border-black/20 bg-white dark:bg-[#151614] px-4 py-3 shadow-sm">
+        <div className="w-9 h-9 shrink-0 rounded-full bg-[#928366] dark:bg-[#c9b98f] text-white dark:text-black flex items-center justify-center">
+            {icon}
+        </div>
+        <div className="min-w-0 text-left">
+            <h3 className="font-bold text-[#1f1f1f] dark:text-white">
+                {label}
+            </h3>
+            <div className="text-[13px] text-[#5c5c5c] dark:text-[#a0a0a0] break-words">
+                {children}
+            </div>
+        </div>
+    </div>
+);
+
 const Contact = () => {
     return (
         <section
@@ -60,22 +76,22 @@ const Contact = () => {
             className="w-full bg-white dark:bg-black text-black dark:text-white transition-colors duration-300 scroll-mt-10"
         >
             {/* TOP */}
-            <div className="px-6 pt-16 pb-14">
+            <div className="px-4 sm:px-6 pt-12 sm:pt-16 pb-10 sm:pb-14">
                 <div className="max-w-6xl mx-auto">
 
                     {/* heading */}
-                    <div className="text-center mb-10">
-                        <h2 className="font-display text-6xl font-bold">
+                    <div className="text-center mb-8 sm:mb-10">
+                        <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold">
                             <span className="text-[#a99a76] dark:text-[#c9b98f]">Let's</span>{" "}
                             <span className="text-[#a3b7b8] dark:text-[#8fa8a9]">Connect</span>
                         </h2>
-                        <p className="mt-4 text-[#2c2c2c] dark:text-[#d8d8d8]">
+                        <p className="mt-4 text-[#2c2c2c] dark:text-[#d8d8d8] px-2 sm:px-0">
                             I'm currently open to new opportunities and collaboration. Let's build something amazing together!
                         </p>
                     </div>
 
                     {/* socials */}
-                    <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr_300px] gap-8 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr_300px] gap-6 sm:gap-8 items-center">
 
                         {/* LEFT socials */}
                         <div className="flex flex-col gap-4">
@@ -85,11 +101,11 @@ const Contact = () => {
                         </div>
 
                         {/* CENTER */}
-                        <div className="flex justify-center">
+                        <div className="flex justify-center order-first lg:order-none">
                             <img
                                 src={connectImg}
                                 alt="Let's connect illustration"
-                                className="w-full max-w-[380px] object-contain select-none"
+                                className="w-full max-w-[260px] sm:max-w-[320px] lg:max-w-[380px] object-contain select-none"
                                 draggable="false"
                             />
                         </div>
@@ -105,8 +121,32 @@ const Contact = () => {
             </div>
 
             {/* BOTTOM */}
-<div className="bg-[#a3b7b8] dark:bg-[#3d4a4b] pt-12 pb-12 px-6 transition-colors duration-300">
-    <div className="max-w-5xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-12 text-center">
+<div className="bg-[#a3b7b8] dark:bg-[#3d4a4b] pt-8 sm:pt-12 pb-12 px-4 sm:px-6 transition-colors duration-300">
+
+    {/* Mobile */}
+    <div className="sm:hidden max-w-md mx-auto flex flex-col gap-4">
+        <InfoCard icon={<Mail size={18} />} label="Email">
+            <a href="mailto:jhanaprudencio05@gmail.com" className="hover:underline break-all">
+                jhanaprudencio05@gmail.com
+            </a>
+        </InfoCard>
+
+        <InfoCard icon={<Phone size={18} />} label="Phone Number">
+            <a href="tel:+639106388971" className="hover:underline block">
+                (+63) 910 638 8971
+            </a>
+            <a href="tel:+639345335974" className="hover:underline block">
+                (+63) 934 533 5974
+            </a>
+        </InfoCard>
+
+        <InfoCard icon={<MapPin size={18} />} label="Location">
+            <p>Bani, Pangasinan</p>
+            <p>Philippines</p>
+        </InfoCard>
+    </div>
+
+    <div className="hidden sm:grid max-w-5xl mx-auto sm:grid-cols-3 gap-12 text-center">
 
         {/* Email */}
         <div className="flex flex-col items-center">
