@@ -63,7 +63,7 @@ const projects = [
         summary:
             "A responsive web-based admission system for the Philippine Military Academy, improving applicant registration, application tracking, permit generation, and administrative management.",
         tech: ["JavaScript", "React", "Node.js", "MySQL", "Tailwind CSS", "Vite"],
-        github: "https://github.com/Jeyah-05/PMA-Admission",
+        github: "https://www.figma.com/design/OOwXTYefeqLcHe5BiZkGyb/PMA-Admission?node-id=639-660&t=8O2JV2jZQP7E2ZPv-1",
         demo: "",
     },
     {
