@@ -76,7 +76,7 @@ const Contact = () => {
             className="w-full bg-white dark:bg-black text-black dark:text-white transition-colors duration-300 scroll-mt-10"
         >
             {/* TOP */}
-            <div className="px-4 sm:px-6 pt-12 sm:pt-16 pb-10 sm:pb-14">
+            <div className="px-4 sm:px-6 pt-12 sm:pt-10 pb-10 sm:pb-14">
                 <div className="max-w-6xl mx-auto">
 
                     {/* heading */}

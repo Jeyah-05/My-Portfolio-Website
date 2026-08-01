@@ -39,7 +39,7 @@ const About = () => {
         <section
             id="about"
             className="bg-white dark:bg-black text-black dark:text-white py-10 px-6 sm:px-8 lg:pr-10 lg:pl-0 transition-colors duration-300">
-            <div className="max-w-7xl mx-auto mt-10 lg:mt-16 lg:px-6">
+            <div className="max-w-7xl mx-auto mt-10 lg:mt-14 lg:px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-[400px_minmax(500px,600px)_220px] gap-10 lg:gap-8 items-start justify-center">
 
                     {/* LEFT IMAGE */}
