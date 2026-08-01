@@ -112,7 +112,7 @@ const About = () => {
                             </p>
                         </div>
 
-                        <div className="mt-10 flex items-center justify-center lg:justify-start gap-3">
+                        <div className="mt-8 flex items-center justify-center lg:justify-start gap-3">
                             <h3 className="font-display text-2xl sm:text-3xl lg:text-4xl text-[#a3b7b8]">
                                 Jhea Jhana
                             </h3>

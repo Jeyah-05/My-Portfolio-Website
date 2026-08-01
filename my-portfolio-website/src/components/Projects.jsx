@@ -62,9 +62,12 @@ const Projects = () => {
 
     const isNarrowPhone = isMobile && viewportWidth < 380;
 
-    const cardWidth = isMobile ? (isNarrowPhone ? 250 : 300) : 460;
+    // Card sizes shrunk by ~1in (96px CSS px) at each breakpoint, with a
+    // floor so the narrowest-phone card doesn't collapse into something
+    // unusably small.
+    const cardWidth = isMobile ? (isNarrowPhone ? 160 : 204) : 364;
     const spacing = isMobile ? cardWidth * 0.55 : cardWidth * 0.72;
-    const stageHeight = isMobile ? (isNarrowPhone ? 420 : 460) : 460;
+    const stageHeight = isMobile ? (isNarrowPhone ? 380 : 410) : 400;
 
     return (
         <section
@@ -259,7 +262,7 @@ function ProjectCard({ project, cardWidth, interactive, isMobile }) {
             shadow-2xl transition-shadow duration-500 hover:shadow-[#a99a76]-300/30"
             style={{ width: cardWidth }}
         >
-            <h2 className="text-center py-3 sm:py-5 font-serif text-2xl sm:text-3xl lg:text-5xl font-bold text-teal-700 dark:text-teal-400 px-4 truncate">
+            <h2 className="text-center py-3 sm:py-5 font-serif text-xl sm:text-2xl lg:text-4xl font-bold text-teal-700 dark:text-teal-400 px-4 truncate">
                 {project.title}
             </h2>
 
@@ -271,7 +274,7 @@ function ProjectCard({ project, cardWidth, interactive, isMobile }) {
                     draggable={false}
                 />
 
-                <p className="font-semibold text-center mt-3 sm:mt-4 text-sm sm:text-base lg:text-lg dark:text-white line-clamp-2">
+                <p className="font-semibold text-center mt-3 sm:mt-4 text-xs sm:text-sm lg:text-base dark:text-white line-clamp-2">
                     {project.description}
                 </p>
 

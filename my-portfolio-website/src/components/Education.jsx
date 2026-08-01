@@ -124,7 +124,7 @@ const Education = () => {
                         ))}
                     </div>
 
-                    {/* folder side tab — desktop only, unchanged */}
+                    {/* folder side tab */}
                     <div className="hidden lg:flex flex-col absolute bottom-0 right-0 translate-x-20/21">
                         <div className="w-6 h-10 bg-[#a99a76] dark:bg-[#5f5642] shadow-r-2xl rounded-tr-2xl" />
                         <div className="w-6 h-10 bg-[#f2ede1] dark:bg-[#3a3a3a] shadow-r-2xl" />

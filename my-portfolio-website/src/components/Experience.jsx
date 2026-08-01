@@ -107,7 +107,7 @@ const Experience = () => {
                         </div>
                     </div>
 
-                    {/* folder side tab — desktop only, unchanged */}
+                    {/* folder side tab */}
                     <div className="hidden lg:flex flex-col absolute bottom-0 right-0 translate-x-20/21">
                         <div className="w-6 h-10 bg-[#a99a76] dark:bg-[#5f5642] shadow-r-2xl rounded-tr-2xl" />
                         <div className="w-6 h-10 bg-[#a3b7b8] dark:bg-[#3d4a4b] shadow-r-2xl" />
