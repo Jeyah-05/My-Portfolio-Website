@@ -13,8 +13,8 @@ const projects = [
         description:
             "Time Series Forecasting Model for Interactive Water Balance Mapping in CAR",
         summary:
-            "HydroHub is a web-based GIS application that visualizes water balance conditions across the Cordillera Administrative Region (CAR). It integrates a time series forecasting model to generate future water balance maps, helping support water resource planning and decision-making through interactive data visualization.",
-        tech: ["JavaScript", "React", "Tailwind CSS", "Node.js", "Express.js", "MySQL", "Leaflet", "Python"],
+            "A web-based GIS application for visualizing and forecasting water balance conditions through interactive maps.",
+        tech: ["JavaScript", "React", "Tailwind CSS", "Node.js", "MySQL", "Leaflet", "Python"],
         github: "https://hydrohub.cordimap.site/",
         demo: "",
     },
@@ -61,8 +61,8 @@ const projects = [
         description:
             "A web-based admission management system for the Philippine Military Academy",
         summary:
-            "Developed and enhanced a responsive web-based admission system for the Philippine Military Academy, improving applicant registration, application tracking, permit generation, and administrative management through an efficient and user-friendly interface.",
-        tech: ["JavaScript", "React", "Node.js", "MySQL", "Tailwind CSS", "Vite", "Ubuntu"],
+            "A responsive web-based admission system for the Philippine Military Academy, improving applicant registration, application tracking, permit generation, and administrative management.",
+        tech: ["JavaScript", "React", "Node.js", "MySQL", "Tailwind CSS", "Vite"],
         github: "https://github.com/Jeyah-05/PMA-Admission",
         demo: "",
     },

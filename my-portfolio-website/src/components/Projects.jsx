@@ -61,10 +61,6 @@ const Projects = () => {
     }, []);
 
     const isNarrowPhone = isMobile && viewportWidth < 380;
-
-    // Card sizes shrunk by ~1in (96px CSS px) at each breakpoint, with a
-    // floor so the narrowest-phone card doesn't collapse into something
-    // unusably small.
     const cardWidth = isMobile ? (isNarrowPhone ? 160 : 204) : 364;
     const spacing = isMobile ? cardWidth * 0.55 : cardWidth * 0.72;
     const stageHeight = isMobile ? (isNarrowPhone ? 380 : 410) : 400;
@@ -329,7 +325,7 @@ function ProjectCard({ project, cardWidth, interactive, isMobile }) {
                 )}
             </div>
 
-            {/* Hover (desktop only — unchanged) */}
+            {/* Hover */}
             {!isMobile && (
                 <div
                     className={`absolute inset-0 bg-black/80
@@ -337,11 +333,11 @@ function ProjectCard({ project, cardWidth, interactive, isMobile }) {
                     flex flex-col justify-center items-center
                     p-8 ${interactive ? "group-hover:opacity-100" : ""}`}
                 >
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 text-center">
+                    <h3 className="text-xl sm:text-3xl font-bold text-white mb-4 text-center">
                         {project.title}
                     </h3>
 
-                    <p className="text-gray-300 text-center mb-5">
+                    <p className="text-[14px] text-gray-300 text-center mb-5">
                         {project.summary}
                     </p>
 
@@ -349,7 +345,7 @@ function ProjectCard({ project, cardWidth, interactive, isMobile }) {
                         {project.tech?.map((tech) => (
                             <span
                                 key={tech}
-                                className="bg-[#a99a76] text-white px-3 py-1 rounded-full text-sm"
+                                className="bg-[#a99a76] text-white text-[14px] px-3 py-1 rounded-full text-sm"
                             >
                                 {tech}
                             </span>
